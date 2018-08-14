@@ -1,3 +1,6 @@
+(function() {
+	"use strict";
+console.log("read script");
 /*
 1. Envolva todo o conteúdo desse desafio em uma IIFE.
 2. Adicione a diretiva 'use strict';
@@ -15,7 +18,12 @@ eles! Use um console.log para cada CPF.
 - "101.123-131x32"
 */
 console.log( 'Limpando CPFs:' );
-// ?
+function cleanCPF(cpf) {
+	let cpfClean = /\D+/g;
+	return cpf.replace(cpfClean, "");
+}
+
+console.log(cleanCPF("049-214 3421-1"));
 
 /*
 Usando os CPFs limpos acima, deixe-os com a formatação correta de CPF.
@@ -23,7 +31,10 @@ Ex.: "999.999.999-99"
 Mostre o resultado no console.
 */
 console.log( '\nFormatando CPFs corretamente:' );
-// ?
+let valueCleaned = cleanCPF("049-214 3421-1");
+console.log(valueCleaned.replace(/(\d{1,3})(\d{1,3})(\d{1,3})(\d{1,2})/g, function () {
+	return `${arguments[1]}.${arguments[2]}.${arguments[3]}-${arguments[4]}`;
+}));
 
 /*
 Crie uma expressão regular que faça match com as palavras "junho" ou "julho",
@@ -87,3 +98,4 @@ corretas, para depois aplicar no código ;)
 */
 console.log( '\nFazer replace dos textos das tags:' );
 // ?
+})()
