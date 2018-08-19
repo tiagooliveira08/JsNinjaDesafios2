@@ -119,17 +119,16 @@ carro.adicionarPessoasAoCarro = function(pessoas) {
 	var quantidadeAtual = pessoas + carro.quantidadePessoas;
 	var limitePessoas = carro.assentos;
 
-	console.log(quantidadeAtual +"Atual");
-	console.log(limitePessoas +"Limite");
-	if(quantidadeAtual > limitePessoas) {
+	if(quantidadeAtual === limitePessoas && quantidadeAtual >= carro.assentos) {
+		return `O carro já está lotado!!`;
+	}
+
+	if(quantidadeAtual > limitePessoas ) {
 		var pessoaSubstantivo = carro.quantidadePessoas === limitePessoas  - 1 ? "pessoa" : "pessoas";
 		var pessoaAdjetivo = carro.quantidadePessoas === limitePessoas - 1 ? "cabe" : "cabem";
 		return `Só ${pessoaAdjetivo} mais ${limitePessoas - carro.quantidadePessoas} ${pessoaSubstantivo}.`;
 	}
 
-	if(quantidadeAtual > limitePessoas + 1) {
-		return `O carro já está lotado!!`;
-	}
 
 	carro.quantidadePessoas += pessoas;
 	return `Já temos ${carro.quantidadePessoas} pessoas no carro!`;
