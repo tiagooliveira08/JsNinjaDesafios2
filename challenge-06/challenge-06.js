@@ -11,6 +11,7 @@ Declare uma variável chamada `teams`, que receberá um array com 5 elementos.
 Os elementos serão nomes de times do campeonato escolhido, e os nomes devem
 estar na ordem em que eles aparecem na tabela no momento da solução desse
 desafio.
+//user status
 */
 var teams = ["Corinhians", "Palmeiras", "Santos", "Vitória", "Bahia"];
 
