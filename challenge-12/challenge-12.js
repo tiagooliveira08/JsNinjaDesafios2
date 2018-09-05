@@ -22,9 +22,8 @@ console.log( 'Propriedades de "person":' );
 Mostre no console, em um array, todas as propriedades do objeto acima.
 Não use nenhuma estrutura de repetição, nem crie o array manualmente.
 */
-var array = [];
-array.push(person.name,person.lastname,person.age);
-console.log(array);
+
+console.log(Object.keys(person));
 
 /*
 Crie um array vazio chamado `books`.
@@ -85,10 +84,13 @@ Mostre no console todas as propriedades e valores de todos os livros,
 no formato abaixo:
     "[PROPRIEDADE]: [VALOR]"
 */
-console.log(Object.keys(books));
-for(var value in Object.keys(books)) {
-	console.log(books);
+
+for(var i = 0; i < books.length; i++){
+	for(var prop in books[i]) {
+		console.log(`${prop} : ${books[i][prop]}`);
+	}
 }
+
 
 /*
 Crie um array chamado `myName`. Cada item desse array deve ser uma letra do
