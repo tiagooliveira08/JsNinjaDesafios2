@@ -1,13 +1,13 @@
 (function() {
-	"use strict";
-console.log("read script");
-/*
+  "use strict";
+  console.log("read script");
+  /*
 1. Envolva todo o conteúdo desse desafio em uma IIFE.
 2. Adicione a diretiva 'use strict';
 3. Crie um arquivo index.html e adicione esse script à ele.
 */
 
-/*
+  /*
 Crie uma função chamada `cleanCPF`, que receba um CPF por parâmetro, e
 retorne esse CPF limpo (somente os números).
 Usando os CPFs abaixo, mostre no console que a limpeza funciona para todos
@@ -17,26 +17,30 @@ eles! Use um console.log para cada CPF.
 - "735 500 794 - 22"
 - "101.123-131x32"
 */
-console.log( 'Limpando CPFs:' );
-function cleanCPF(cpf) {
-	let cpfClean = /\D+/g;
-	return cpf.replace(cpfClean, "");
-}
+  function cleanCPF(cpf) {
+    let regExp = /\D/g;
+    return cpf.replace(regExp, "");
+  }
+  console.log(cleanCPF("049-214 3421-1"));
+  console.log(cleanCPF("210.458.522-05"));
+  console.log(cleanCPF("735 500 794 - 22"));
+  console.log(cleanCPF("101.123-131x32"));
 
-console.log(cleanCPF("049-214 3421-1"));
-
-/*
+  /*
 Usando os CPFs limpos acima, deixe-os com a formatação correta de CPF.
 Ex.: "999.999.999-99"
 Mostre o resultado no console.
 */
-console.log( '\nFormatando CPFs corretamente:' );
-let valueCleaned = cleanCPF("049-214 3421-1");
-console.log(valueCleaned.replace(/(\d{1,3})(\d{1,3})(\d{1,3})(\d{1,2})/g, function () {
-	return `${arguments[1]}.${arguments[2]}.${arguments[3]}-${arguments[4]}`;
-}));
+  console.log("\nFormatando CPFs corretamente:");
+  function formatCPF(cpf) {
+    let regExp = /(\d{1,3})(\d{1,3})(\d{1,3})(\d{1,2})/g;
+    return cpf.replace(regExp, function() {
+      return `${arguments[1]}.${arguments[2]}.${arguments[3]}-${arguments[4]}`;
+    });
+  }
+  console.log(formatCPF(cleanCPF("049 - 214 3421 - 1")));
 
-/*
+  /*
 Crie uma expressão regular que faça match com as palavras "junho" ou "julho",
 usando o mínimo de caracteres possíveis na regex.
 Para garantir que a regex funciona, teste-a usando o método match. Se houver
@@ -47,10 +51,16 @@ Mostre no console o resultado do match para a frase:
 O resultado deve ser:
 ["junho", "julho"]
 */
-console.log( '\nMatch com as palavras "junho" ou "julho" para a frase "Os meses de janeiro, junho e julho começam com a letra j.":' );
-// ?
+  console.log(
+    '\nMatch com as palavras "junho" ou "julho" para a frase "Os meses de janeiro, junho e julho começam com a letra j.":'
+  );
+  var regTest = "Os meses de janeiro, junho e julho começam com a letra j".match(
+    /ju[ln]ho/gi
+  );
+  console.log(regTest);
+  // ?
 
-/*
+  /*
 Crie uma expressão regular que faça o match com a abertura de uma tag
 HTML qualquer.
 Ex.: "<div>", "<section>", "<blockquote>".
@@ -59,10 +69,12 @@ Use o método match e faça o teste com a marcação abaixo:
 O resultado deve ser:
 ["<div>", "<section>", "<blockquote>"]
 */
-console.log( '\nMatch com a abertura de uma tag HTML:' );
-// ?
+  console.log("\nMatch com a abertura de uma tag HTML:");
+  regTest =
+    "<div><section><blockquote>Texto <img /></blockquote></section></div>";
+  console.log(regTest.match(/<\w+>/gi));
 
-/*
+  /*
 Crie uma expressão regular que faça o match com uma tag HTML vazia, casando
 com a abertura e fechamento da tag.
 Ex.: "<div></div>", "<section></section>", "<blockquote></blockquote>".
@@ -71,10 +83,11 @@ Use o método match e faça o teste com a marcação abaixo:
 O resultado deve ser:
 ["<li></li>", "<li></li>", "<span></span>"]
 */
-console.log( '\nMatch com tags HTML vazias (abertura e fechamento da tag):' );
-// ?
+  console.log("\nMatch com tags HTML vazias (abertura e fechamento da tag):");
+  regTest = "<div><ul><li></li><li></li><li><span></span></li></ul></div>";
+  console.log(regTest.match(/<\w+><\/\w+>/gi));
 
-/*
+  /*
 Vamos complicar um pouco agora :D
 
 Crie uma expressão regular que faça o match com um texto existente dentro de
@@ -96,6 +109,6 @@ Uma dica: faça o match aos poucos. Para facilitar o teste, use o site
 https://regex101.com/#javascript e verifique se as capturas estão
 corretas, para depois aplicar no código ;)
 */
-console.log( '\nFazer replace dos textos das tags:' );
-// ?
-})()
+  console.log("\nFazer replace dos textos das tags:");
+  // ?
+})();
